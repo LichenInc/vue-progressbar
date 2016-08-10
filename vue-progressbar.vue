@@ -1,19 +1,18 @@
 <script>
 export default {
   props:{
-    percent: {
-      type: Number,
-      required: true
-    },
-    options: {
+    progress: {
       type: Object,
       default(){
         return {
-          canSuccess: true, 
-          color: 'rgb(143, 255, 199)',
-          failedColor: 'red',
-          show: false,
-          height: '2px'
+          percent: 0,
+          options: {
+            canSuccess: true,
+            color: 'rgb(143, 255, 199)',
+            failedColor: 'red',
+            show: false,
+            height: '2px'
+          },
         }
       }
     }
@@ -38,10 +37,10 @@ export default {
   <div 
     class="cov-progress" 
     :style="{
-      'width': percent+'%',
-      'height': options.height,
-      'background-color': options.canSuccess? options.color : options.failedColor,
-      'opacity': options.show ? 1 : 0
+      'width': progress.percent+'%',
+      'height': progress.options.height,
+      'background-color': progress.options.canSuccess? progress.options.color : progress.options.failedColor,
+      'opacity': progress.options.show ? 1 : 0
     }"
   >
   </div>
